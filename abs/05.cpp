@@ -3,6 +3,19 @@ using namespace std;
 
 /* ちょっと考えてもよくわからなくなってしまったので回答みたら三重ループで良かったんだ。。。。 */
 /* そんな日は寝た方がいい */
+/*
+    for (int i = 0; i <= a; i++) {
+      for (int j = 0; j <= b; j++) {
+        for (int k = 0; k <= c; k++) {
+          if (500*i + 100*j + 50*k == x) ++ans;
+        }
+      }
+    }
+    -> {}は全て取り払える
+    for (int i = 0; i <= a; i++) 
+      for (int j = 0; j <= b; j++) 
+        for (int k = 0; k <= c; k++) if (500*i + 100*j + 50*k == x) ++ans;
+*/
 
 int main() {
   int a, b, c, x;
