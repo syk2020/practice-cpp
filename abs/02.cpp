@@ -6,4 +6,5 @@ int main() {
   cin >> a >> b;
   if (a % 2 == 1 && b % 2 == 1) cout << "Odd" << endl;
   else cout << "Even" << endl;
+  // return 0; <- 忘れてる
 }
