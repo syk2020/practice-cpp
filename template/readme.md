@@ -12,4 +12,6 @@ AtCoder Beginner Contest にて、C問題までならまあ解けるかなとい
 と言っても <bits.stdc++.h> と REPマクロ書いてるだけです
 
 2021-09-14  
-`typedef long long ll;` 追加
+`typedef long long ll;` 追加  
+2021-09-16  
+`typedef long long ll;` -> `using ll = long long;`に変更  
