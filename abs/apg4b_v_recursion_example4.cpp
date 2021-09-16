@@ -6,6 +6,8 @@ using namespace std;
 /* 元のデータとチェック済みの箇所のデータを調べる必要があるので、引数としてはどちらも取ること */
 
 // 正しい移動かを調べる (y, x)が移動先
+// boardもcheckedも参照渡し
+// かつ、boardは一次元配列であることを把握
 bool is_valid_move(vector<string> &board, vector<vector<bool>> &checked, int x, int y) {
   // 渡されたボードの大きさを把握
   int N = board.size();
@@ -15,6 +17,7 @@ bool is_valid_move(vector<string> &board, vector<vector<bool>> &checked, int x, 
     return false;
   }
   // 移動先が壁マス
+  // -> board.at(y)はvectorの配列インデックス、.at(x)はstringの配列インデックス
   if (board.at(y).at(x) == '#') {
     return false;
   }
@@ -45,6 +48,9 @@ bool reachable(vector<string> &board, vector<vector<bool>> &checked, int x, int 
 
   // 「上」「右」「下」「左」のいずれかの移動でゴールに到達できるか？
   bool result = false;
+  
+  // 上右下左の４箇所それぞれで行けるか確認する
+  // 再帰を使用→今いるマスから一つ先に行けるか確認→再帰とやっていく
 
   // 上へ移動したマスからゴールに到達できるか？
   if (is_valid_move(board, checked, x, y - 1) && reachable(board, checked, x, y - 1)) {
@@ -70,6 +76,7 @@ int main() {
   int N;
   cin >> N;
   // マス目の状態を受け取る
+  // 配列が一次元であることに注意
   vector<string> board(N);
   for (int i = 0; i < N; i++) {
     cin >> board.at(i);
