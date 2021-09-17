@@ -1,55 +1,80 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-/* 再帰の問題かと思ったけど、計算量の問題だった */
-/* 最後、1000札は（N-x-y）で出るからループは要らないよね、そこはループせずに切りましょうって話 */
-/* 基本的には05.cppと同じ */
-/* forの最大値は x <= N で <= なのもハマりポイントなので忘れずに */
+/* dreamerとeraserという被る文字列があるので、後ろから消していくとベター */
+/* しかし泥臭く解いてしまった */
+/* reverse()で逆回転させてから解くか〜考えつかなかった */
+/* 後ろから、というのに気づけただけでもえらいぞわたし */
 
 int main() {
-  int N, Y, ans10000 = -1, ans5000 = -1, ans1000 = -1;
-  cin >> N >> Y;
-  for (int x = 0; x <= N; ++x) {
-    for (int y = 0; y <= (N - x); ++ y) {
-      if (10000 * x + 5000 * y + 1000 * (N - x - y) == Y) {
-        ans10000 = x; ans5000 = y; ans1000 = N - x - y;
+  string s; cin >> s;
+  int s_size = s.size();
+  string ans = "NO";
+  while (s_size >= 5) {
+    string matcher = s.substr(s_size-5, 5);
+    if (matcher == "dream" || matcher == "erase") {
+      s.erase(s_size-5, 5);
+      s_size = s.size();
+      continue;
+    }
+    if (s_size >= 6) {
+      matcher = s.substr(s_size-6, 6);
+      if (matcher == "eraser") {
+        s.erase(s_size-6, 6);
+        s_size = s.size();
+        continue;
+      }
+      if (s_size >= 7) {
+        matcher = s.substr(s_size-7, 7);
+        if (matcher == "dreamer") {
+          s.erase(s_size-7, 7);
+          s_size = s.size();
+          continue;
+        }
       }
     }
+    break;
   }
-  cout << ans10000 << " " << ans5000 << " " << ans1000 << endl;
+  if (s_size == 0) ans = "YES";
+  cout << ans << endl;
 }
 
 /*
-最初に書いてたもの
-なんかこの手の問題、再帰を使わなきゃいけない気がしてしまう
-bool func(int i, int w, vector<int> &data) {
-  // i -> 残り枚数　 0になった時がベースケース
-  // w -> 残り金額　 i == 0 の時、w == 0ならばtrueを返せる
-  // data -> 各枚数　data.at(0), data.at(1), data.at(2)の総和はNになるはず
+// 公式解説
+// Greedyアルゴリズムというらしい
 
-  bool ans = false;
-  if (i == 0) return true;
-  // for で10000、5000、1000のどれかを増やしていく
-  // dataのどれかが増える度、iは減っていく
-  for (int j = 0; j < 3; j++) {
-    w -= (10000 * data.at(0) + 5000 * data.at(1) + 1000 * data.at(2));
-    data.at(j) += 1;
-    --i;
-    cout << i << " " << w << " " << data.at(0) << " " << data.at(1) << " " << data.at(2) << endl;
-  }
-  return ans;
-}
-
+// ここスルーしてたけど、結局逆順で参照するからdreamが先に格納されても問題ない。素晴らしい
+string divide[4] = {"dreamer", "dream", "eraser", "erase"};
 int main() {
-  int N, YEN;
-  cin >> N >> YEN;
-  vector<int> v(3, 0);
-  if (YEN <= 10000*N && YEN >= 1000*N){
-    if (!func(N, YEN, v)) {
-      v.assign(3, -1);
+  string s; cin >> s;
+
+  // 全部逆さまにする
+  reverse(s.begin(), s.end());
+  for (int i = 0; i < 4; ++i) reverse(divide[i].begin(), divide[i].end());
+
+  bool can = true;
+
+  // ここで第３引数をなくし、ループを自動でカウントアップさせないようにする
+  for (int i = 0; i < s.size();) {
+    // 上記の文字列のどれかと一致したかどうかを判別する
+    bool can2 = false;
+    for (int j = 0; j < 4; ++j) {
+      string d = divide[j];
+      // どれかの文字列と一致するか確かめる
+      if (s.substr(i, d.size()) == d) {
+        can2 = true;
+        // 一致した場合 i をd.size()ぶん押し上げる
+        i += d.size();
+        break;
+      }
+    }
+    // ここでcan2がtrueになっていなかったら4つのうちのどれも分割できなかったということ
+    if (!can2) {
+      can = false;
+      break;
     }
   }
-  cout << v.at(0) << " " << v.at(1) << " " << v.at(2) << endl;
-  return 0;
+  cout << (can ? "YES" : "NO") << endl;
 }
+
 */

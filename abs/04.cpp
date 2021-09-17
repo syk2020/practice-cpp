@@ -1,36 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/* ちょっと考えてもよくわからなくなってしまったので回答みたら三重ループで良かったんだ。。。。 */
+/* そんな日は寝た方がいい */
 /*
-// -> for の中身、a.size()だとエラーが出るのでnにする
-// -> 自作関数の場合、処理が１行で終わっても{}を外すことはできない
-bool is_odd (int i) {
-  return ((i%2) == 1);
-}
-// -> is_oddで奇数なら trueを返すようにしているので、条件としては０の時のみansを増やす
-// 　　args3 で引数として自動にvector aの要素が入ることに注意
-count_if(a.begin(), a.end(), is_odd)
-// -> 範囲for文と参照を使って下記のようにも記載できる
-      for (int &x : a) x /= 2;
+    for (int i = 0; i <= a; i++) {
+      for (int j = 0; j <= b; j++) {
+        for (int k = 0; k <= c; k++) {
+          if (500*i + 100*j + 50*k == x) ++ans;
+        }
+      }
+    }
+    -> {}は全て取り払える
+    for (int i = 0; i <= a; i++) 
+      for (int j = 0; j <= b; j++) 
+        for (int k = 0; k <= c; k++) if (500*i + 100*j + 50*k == x) ++ans;
 */
 
-bool is_odd (int i) {
-  return ((i%2) == 1);
-}
-
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  for (int i = 0; i < n; ++i) {
-    cin >> a.at(i);
-  }
+  int a, b, c, x;
+  cin >> a >> b >> c >> x;
   int ans = 0;
-  while (1) {
-    if (count_if(a.begin(), a.end(), is_odd) == 0) {
-      for (int i = 0; i < n; ++i) a.at(i) /= 2;
-      ++ans;
-    } else break;
+  if (!(x % 100 == 50 && c == 0) && (x < 500*a + 100*b + 50*c)) {
+    for (int i = 0; i <= a; i++) {
+      for (int j = 0; j <= b; j++) {
+        for (int k = 0; k <= c; k++) {
+          if (500*i + 100*j + 50*k == x) ++ans;
+        }
+      }
+    }
   }
   cout << ans << endl;
+  return 0;
 }
