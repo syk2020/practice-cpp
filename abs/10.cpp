@@ -42,6 +42,8 @@ int main() {
 /*
 // 公式解説
 // Greedyアルゴリズムというらしい
+
+// ここスルーしてたけど、結局逆順で参照するからdreamが先に格納されても問題ない。素晴らしい
 string divide[4] = {"dreamer", "dream", "eraser", "erase"};
 int main() {
   string s; cin >> s;
