@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// https://atcoder.jp/contests/sumitrust2019/tasks/sumitb2019_d
 /* すでにチェック済みの数字(char)が10個あったらbreak */
 /* すでにチェック済みの数字(char)があったらcontinue */
 /* これでACだったけど、もう少し綺麗に書けないもんだろうか。。。。 */

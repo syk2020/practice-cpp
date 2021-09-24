@@ -3,6 +3,7 @@ using namespace std;
 #define REP(i, a, n) for (int i = (a); i < (n); ++i)
 #define FORE(x, a) for (auto &x : a)
 
+// https://atcoder.jp/contests/abc128/tasks/abc128_c
 /* ビット全探索の練習 */
 /* コードを読めば理解はできる */
 /* けど実際に書くのはかなり大変。慣れが必要 */

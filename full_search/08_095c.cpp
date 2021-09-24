@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-  
+
+// https://atcoder.jp/contests/abc095/tasks/arc096_a
 /* これも全探索の一つ */
 /* でもほぼ力技で解決してて探索してない。。。。 */
 
