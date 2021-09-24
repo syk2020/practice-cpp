@@ -38,22 +38,24 @@ int main() {
 }
 
 /*
-// forを一度で書いてしまうパターン
+// forを一度で書いてしまう+Stringのfindとstring::nposを使ったパターン
+// 行数は多いけどこっちの方が綺麗で好きかな
+
 int main() {
   string S; cin >> S;
   int N = S.size();
-  vector<char> ACGT{'A', 'C', 'G', 'T'};
+  string ACGT = "ACGT";
   bool checker = false;
   int maincnt = 0, subcnt = 0;
   REP (i, N) {
-    auto it = find(ACGT.begin(), ACGT.end(), S.at(i));
+    auto pos = ACGT.find(S.at(i));
     if (!checker) {
-      if (it != ACGT.end()) {
+      if (pos != string::npos) {
         subcnt = 1;
         checker = true;
       }
     } else {
-      if (it != ACGT.end()) ++subcnt;
+      if (pos != string::npos) ++subcnt;
       else {
         subcnt = 0;
         checker = false;
