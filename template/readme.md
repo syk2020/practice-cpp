@@ -15,3 +15,6 @@ AtCoder Beginner Contest にて、C問題までならまあ解けるかなとい
 `typedef long long ll;` 追加  
 2021-09-16  
 `typedef long long ll;` -> `using ll = long long;`に変更  
+2021-09-24  
+マクロいくつか追加  
+テンプレートでいわゆるchmax/chmin（最大値と最小値を比べて適切な方を返し、第１引数が第２引数に変わったらtrueを返す）も設定  
