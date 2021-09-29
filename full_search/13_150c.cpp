@@ -4,6 +4,8 @@ using namespace std;
 #define FORE(i, a) for (auto &i : a)
 #define ALL(x) (x).begin(),(x).end()
 
+// https://atcoder.jp/contests/abc150/tasks/abc150_c
+
 int N;
 
 bool checker (vector<int> A, vector<int> B) {

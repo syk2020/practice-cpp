@@ -3,6 +3,8 @@ using namespace std;
 #define REP(i, a, n) for (int i = (a); i < (n); ++i)
 #define ALL(x) (x).begin(),(x).end()
 
+// https://atcoder.jp/contests/abc145/tasks/abc145_c
+
 /* 順列の全探索 */
 /* 良かった、ビット全探索よりわかりやすかった */
 

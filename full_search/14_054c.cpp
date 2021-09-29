@@ -4,7 +4,9 @@ using namespace std;
 #define FORE(i, a) for (auto &i : a)
 #define ALL(x) (x).begin(),(x).end()
 
-/* count関数がとても使いやすい */
+// https://atcoder.jp/contests/abc054/tasks/abc054_c
+
+/* count関数がとても使いやすいと声を大にして言いたい */
 /* pp = {0, 7, 6, 5, 4, 3, 2, 1}としてprev_permutationにする */
 /* -> if (np.at(0) != 0) break; が不要になるのでこれもアリか？ */
 
