@@ -3,6 +3,7 @@ using namespace std;
 
 /* 順列全探索の練習 */
 /* bit全探索よりはまだわかりやすい */
+/* けどこのコードは正直なんだかわからんな…… */
 
 int N, A[12][12], perm[12], ans = INT_MAX;
 int main() {
