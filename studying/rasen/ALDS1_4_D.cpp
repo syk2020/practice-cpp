@@ -3,6 +3,8 @@ using namespace std;
 #define REP(i, a, n) for (int i = (a); i < (n); ++i)
 using ll = long long;
 
+// https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/4/ALDS1_4_D
+
 /* 想定できる最大量との二分探索をして、どこで一致するかを確認する問題 */
 /* これは慣れていないと辛い。いい練習になった */
 

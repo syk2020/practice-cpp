@@ -2,6 +2,10 @@
 using namespace std;
 #define REP(i, a, n) for (int i = (a); i < (n); ++i)
 
+// https://onlinejudge.u-aizu.ac.jp/courses/lesson/1/ALDS1/4/ALDS1_4_C
+/* 螺旋本にあるようにsetを使わずにハッシュテーブルを自作するとなると非常に面倒くさい */
+/* setあってよかったあ */
+
 int N;
 set<string> dict;
 int main() {
