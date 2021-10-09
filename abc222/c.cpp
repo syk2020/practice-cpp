@@ -19,8 +19,9 @@ int checkWin(char a, char b) {
   return ((a == 'G' && b == 'C') || (a == 'C' && b == 'P') || (a == 'P' && b == 'G')) ? 0 : 1;
 }
 
+// 全探索ということは気づけたけど結局ランク付の上手い方法が思いつかなくて挫折した感じ
 // データ構造も思いついたし、道筋も悪くなかったから前進したと思おう。。。
-// このぐらいはできるようになりたいなと
+// このぐらいはできるようになりたいな〜
 int main() {
   cin >> N >> M;
   REP (i, 0, 2*N) {
@@ -30,14 +31,17 @@ int main() {
   }
   REP (i, 0, M) {
     REP (j, 0, N) {
-      pair<int, int> pl1 = winNum.at(2*j), pl2 = winNum.at(2*j + 1);
+      // 0 からのカウント -> 2*0=0, 2*0-1=-1でインデックスとして不適当になってしまう
+      // インデックスとして使いたい場合は　2*0=0, 2*0+1=1とすると良い
+      pair<int, int> pl1 = winNum.at(2*j), pl2 = winNum.at(2*j+1);
       int win = checkWin(GCP.at(pl1.second).at(i), GCP.at(pl2.second).at(i));
       if (win == -1) continue;
       // 勝者の順位（winNumのfirst）を勝利数に応じて-1する
+      // 勝ち以外は変動なし＆勝った時はランクが上がる＝数値が若くなるので、勝った時に-1する
       else winNum.at(2*j+win).first -= 1;
     }
     // １ラウンド終了ごとにソートをする
-    // 勝利数、プレイヤー番号で若い順にソートされる
+    // ランキング、プレイヤー番号で若い順にソートされる
     sort(ALL(winNum));
   }
   FORE (x, winNum) cout << x.second + 1 << endl;
