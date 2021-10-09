@@ -20,6 +20,7 @@ int checkWin(char a, char b) {
 }
 
 // データ構造も思いついたし、道筋も悪くなかったから前進したと思おう。。。
+// このぐらいはできるようになりたいなと
 int main() {
   cin >> N >> M;
   REP (i, 0, 2*N) {
@@ -42,8 +43,8 @@ int main() {
   FORE (x, winNum) cout << x.second + 1 << endl;
 }
 
-
-
+// 悪戦苦闘した軌跡
+/*
 int N, M;
 vector<pair<int, int>> winNum;
 vector<string> GCP;
@@ -53,8 +54,6 @@ int checkWin(char a, char b) {
   return ((a == 'G' && b == 'C') || (a == 'C' && b == 'P') || (a == 'P' && b == 'G')) ? 0 : 1;
 }
 
-// 普通に全探索で行けたと思うけどランク分けはもう意味不明
-// これぐらいはできるようになりたいねー
 int main() {
   cin >> N >> M;
   REP (i, 0, 2*N) {
@@ -75,7 +74,7 @@ int main() {
   FORE (x, winNum) cout << x.first << " " << x.second << endl;
 
 }
-
+*/
 
 /*
   REP (i, 0, M) {
